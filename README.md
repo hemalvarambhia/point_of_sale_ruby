@@ -1,0 +1,1 @@
+The point of sale system exercise for JBrains' TDD course
