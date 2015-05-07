@@ -10,6 +10,8 @@ class PointOfSale
      @display.set_text "£5.00"
     elsif barcode == "123456"
      @display.set_text "£1.50"
+    else
+     @display.set_text "Product not found"
     end
   end
 end

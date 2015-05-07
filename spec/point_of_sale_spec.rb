@@ -26,4 +26,12 @@ describe "Point of Sale system" do
      expect(@display.text).to eq("£5.00")
    end
  end
+
+ context "when a product is not found" do
+   it "says the product cannot be found" do
+     @point_of_sale.on_barcode "654321"
+
+     expect(@display.text).to eq("Product not found")
+   end
+ end
 end
