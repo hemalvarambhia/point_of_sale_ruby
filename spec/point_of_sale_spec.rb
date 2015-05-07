@@ -21,5 +21,14 @@ describe "Point of Sale system" do
 
      expect(display.text).to eq("£1.50")
    end
+
+   it "displays a different price for a different product" do
+     display = Display.new
+     point_of_sale = PointOfSale.new display
+
+     point_of_sale.on_barcode "246810"
+
+     expect(display.text).to eq("£5.00")
+   end
  end
 end
