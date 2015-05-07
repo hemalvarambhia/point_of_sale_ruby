@@ -5,13 +5,19 @@ class PointOfSale
 
   def on_barcode barcode
     if barcode.empty?
-     @display.set_text "Barcode is invalid"
-    elsif barcode == "246810"
-     @display.set_text "£5.00"
-    elsif barcode == "123456"
-     @display.set_text "£1.50"
+      @display.set_text "Barcode is invalid"
     else
-     @display.set_text "Product not found"
+      @display.set_text find_in_catalogue(barcode)
     end
+  end
+
+  private
+  def find_in_catalogue(barcode)
+    catalogue = {
+    	"123456" => "£1.50",
+        "246810" => "£5.00"
+    }
+
+    catalogue.fetch(barcode, "Product not found")
   end
 end
