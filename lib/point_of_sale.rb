@@ -1,10 +1,7 @@
 class PointOfSale
-  def initialize display
+  def initialize(display, catalog)
     @display = display
-    @catalogue = {
-      "123456" => "£1.50",
-      "246810" => "£5.00"
-    }
+    @catalogue = catalog
   end
 
   def on_barcode barcode
