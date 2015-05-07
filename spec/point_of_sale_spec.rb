@@ -9,6 +9,7 @@ describe "Point of Sale system" do
    @display = Display.new
    @point_of_sale = PointOfSale.new(@display, catalogue)
  end
+
  context "when the barcode is invalid" do
   it "states the barcode is invalid" do
     @point_of_sale.on_barcode ""
