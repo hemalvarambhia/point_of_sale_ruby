@@ -4,7 +4,10 @@ class PointOfSale
   end
 
   def on_barcode barcode
-    @display.set_text "Barcode is invalid"
+    if barcode.empty?
+     @display.set_text "Barcode is invalid"
+    else
+     @display.set_text "£1.50"
+    end
   end
- 
 end
