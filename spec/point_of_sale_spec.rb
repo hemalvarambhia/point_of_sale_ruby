@@ -6,7 +6,7 @@ describe "Point of Sale system" do
     display = Display.new
     point_of_sale = PointOfSale.new display
  
-    point_of_sale = point_of_sale.on_barcode ""
+    point_of_sale.on_barcode ""
 
     expect(display.text).to eq("Barcode is invalid")
   end
