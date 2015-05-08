@@ -10,11 +10,19 @@ describe "Point of Sale system" do
    @point_of_sale = PointOfSale.new(@display, catalogue)
  end
 
- context "when the barcode is invalid" do
+ context "when the barcode is blank" do
   it "states the barcode is invalid" do
     @point_of_sale.on_barcode ""
 
     expect(@display.text).to eq("Barcode is invalid")
+  end
+ end
+
+ context "when the barcode is null" do
+  it "states the barcode is invalid" do
+   @point_of_sale.on_barcode nil
+
+   expect(@display.text).to eq("Barcode is invalid")
   end
  end
 
