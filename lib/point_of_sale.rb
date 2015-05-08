@@ -1,7 +1,9 @@
+require 'product_catalogue'
+
 class PointOfSale
-  def initialize(display, catalog)
+  def initialize(display, product_catalogue = ProductCatalogue.new({}))
     @display = display
-    @catalogue = catalog
+    @catalogue = product_catalogue
   end
 
   def on_barcode barcode
@@ -14,6 +16,6 @@ class PointOfSale
 
   private
   def price_from_catalogue(barcode)
-    @catalogue.fetch(barcode, "Product not found")
+    @catalogue.price_from_barcode(barcode)
   end
 end

@@ -1,5 +1,6 @@
 require_relative '../lib/display'
 require_relative '../lib/point_of_sale'
+require_relative '../lib/product_catalogue'
 describe "Point of Sale system" do
  before :each do
    catalogue = {
@@ -7,7 +8,8 @@ describe "Point of Sale system" do
       "246810" => "£5.00"
     }
    @display = Display.new
-   @point_of_sale = PointOfSale.new(@display, catalogue)
+   product_catalogue = ProductCatalogue.new catalogue
+   @point_of_sale = PointOfSale.new(@display, product_catalogue)
  end
 
  context "when the barcode is blank" do
