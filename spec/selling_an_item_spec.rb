@@ -13,22 +13,6 @@ describe "Selling an item" do
    @point_of_sale = PointOfSale.new(@display, product_catalogue)
  end
 
- context "when the barcode is blank" do
-  it "states the barcode is invalid" do
-    @point_of_sale.on_barcode ""
-
-    expect(@display.text).to eq("Barcode is invalid")
-  end
- end
-
- context "when the barcode is null" do
-  it "states the barcode is invalid" do
-   @point_of_sale.on_barcode nil
-
-   expect(@display.text).to eq("Barcode is invalid")
-  end
- end
-
  context "when a product is found" do
    it "displays the product's price" do
      @point_of_sale.on_barcode "123456"
