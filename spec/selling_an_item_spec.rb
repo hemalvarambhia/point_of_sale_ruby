@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 require_relative '../lib/display'
 require_relative '../lib/point_of_sale'
 require_relative '../lib/product_catalogue'
-describe "Point of Sale system" do
+describe "Selling an item" do
  before :each do
    catalogue = {
       "123456" => "£1.50",
