@@ -9,8 +9,12 @@ class PointOfSale
   def on_barcode barcode
     if barcode == nil || barcode.empty?
       @display.set_text "Barcode is invalid"
-    else
+      return
+
+    if @catalogue.contains?(barcode)
       @display.set_text price_from_catalogue(barcode)
+    else
+      @display.set_text "Product not found"
     end
   end
 
