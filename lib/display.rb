@@ -3,6 +3,10 @@ class Display
   def initialize
     @text = ""
   end
+  
+  def no_sale_yet
+    @text = "No sale made yet. Begin by scanning an item."
+  end
 
   def print price
     @text = price

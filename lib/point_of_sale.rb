@@ -6,6 +6,10 @@ class PointOfSale
     @catalogue = product_catalogue
   end
 
+  def on_total
+    @display.no_sale_yet
+  end
+
   def on_barcode barcode
     if barcode == nil || barcode.empty?
       @display.error "Barcode is invalid"
