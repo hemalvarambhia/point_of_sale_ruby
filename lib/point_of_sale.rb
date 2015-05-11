@@ -5,13 +5,13 @@ class PointOfSale
   def initialize(display, product_catalogue = ProductCatalogue.new({}))
     @display = display
     @catalogue = product_catalogue
-    @price = ""
+    @scanned_price = ""
   end
 
   def on_total
-    scanned_price = @price.size > 0
-    if scanned_price
-      @display.total @price
+    sale_in_progress = @scanned_price.size > 0
+    if sale_in_progress
+      @display.total @scanned_price
     else
       @display.no_sale_yet
     end
@@ -24,8 +24,8 @@ class PointOfSale
     end
 
     if @catalogue.contains?(barcode)
-      @price = price_from_catalogue barcode
-      @display.print @price
+      @scanned_price = price_from_catalogue barcode
+      @display.print @scanned_price
     else
       @display.product_not_found
     end
