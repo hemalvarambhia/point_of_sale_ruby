@@ -21,11 +21,23 @@ describe "Selling multiple items" do
         display = Display.new
         catalogue = ProductCatalogue.new("123456" => "£6.50")
         point_of_sale = PointOfSale.new(display, catalogue)
-        point_of_sale.on_barcode "123456"
 
+        point_of_sale.on_barcode "123456"
         point_of_sale.on_total
        
         expect(display.text).to eq("Total: £6.50")
+      end
+    end
+
+    context "when the item is not found" do
+      it "tells the user no sale has been made yet" do
+         display = Display.new        
+         point_of_sale = PointOfSale.new(display, ProductCatalogue.new("123456" => "£6.50"))
+         point_of_sale.on_barcode "654321"
+
+         point_of_sale.on_total
+
+         expect(display.text).to eq("No sale made yet. Begin by scanning an item.")
       end
     end
   end
