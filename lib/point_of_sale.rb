@@ -1,13 +1,19 @@
+# -*- coding: utf-8 -*-
 require 'product_catalogue'
 
 class PointOfSale
   def initialize(display, product_catalogue = ProductCatalogue.new({}))
     @display = display
     @catalogue = product_catalogue
+    @price = ""
   end
 
   def on_total
-    @display.no_sale_yet
+    if @price.empty?
+      @display.no_sale_yet
+    else
+      @display.total @price
+    end
   end
 
   def on_barcode barcode
@@ -17,7 +23,8 @@ class PointOfSale
     end
 
     if @catalogue.contains?(barcode)
-      @display.print price_from_catalogue(barcode)
+      @price = price_from_catalogue barcode
+      @display.print @price
     else
       @display.product_not_found
     end

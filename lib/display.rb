@@ -1,7 +1,11 @@
 class Display
-  attr_reader :text
+  attr_accessor :text
   def initialize
     @text = ""
+  end
+
+  def total price
+    @text = "Total: #{price}"
   end
   
   def no_sale_yet
