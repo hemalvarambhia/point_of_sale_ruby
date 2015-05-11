@@ -9,10 +9,11 @@ class PointOfSale
   end
 
   def on_total
-    if @price.empty?
-      @display.no_sale_yet
-    else
+    scanned_price = @price.size > 0
+    if scanned_price
       @display.total @price
+    else
+      @display.no_sale_yet
     end
   end
 
