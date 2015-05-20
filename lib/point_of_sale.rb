@@ -11,7 +11,7 @@ class PointOfSale
   def on_total
     sale_in_progress = @scanned_price.size > 0
     if sale_in_progress
-      @display.total @scanned_price
+      @display.total format_monetary_amount(@scanned_price)
     else
       @display.no_sale_yet
     end
@@ -25,7 +25,7 @@ class PointOfSale
 
     if @catalogue.contains?(barcode)
       @scanned_price = price_from_catalogue barcode
-      @display.print @scanned_price
+      @display.print format_monetary_amount(@scanned_price)
     else
       @display.product_not_found
     end
@@ -34,5 +34,9 @@ class PointOfSale
   private
   def price_from_catalogue(barcode)
     @catalogue.price_from_barcode(barcode)
+  end
+
+  def format_monetary_amount(price)
+    price
   end
 end
