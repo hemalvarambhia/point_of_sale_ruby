@@ -8,8 +8,12 @@ describe "Scanning an item" do
       "123456" => "£1.50",
       "246810" => "£5.00"
     }
+   catalogue_in_pence = {
+      "123456" => 150,
+      "2468100" => 500
+   } 
    @display = Display.new
-   product_catalogue = ProductCatalogue.new catalogue
+   product_catalogue = ProductCatalogue.new(catalogue, catalogue_in_pence)
    @point_of_sale = PointOfSale.new(@display, product_catalogue)
  end
 

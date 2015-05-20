@@ -19,7 +19,7 @@ describe "Selling multiple items" do
     context "when the item is found" do
       it "displays the total correctly" do
         display = Display.new
-        catalogue = ProductCatalogue.new("123456" => "£6.50")
+        catalogue = ProductCatalogue.new({"123456" => "£6.50"}, {"123456" => 650 })
         point_of_sale = PointOfSale.new(display, catalogue)
 
         point_of_sale.on_barcode "123456"
@@ -32,7 +32,7 @@ describe "Selling multiple items" do
     context "when the item is not found" do
       it "tells the user no sale has been made yet" do
          display = Display.new        
-         point_of_sale = PointOfSale.new(display, ProductCatalogue.new("123456" => "£6.50"))
+         point_of_sale = PointOfSale.new(display, ProductCatalogue.new({"123456" => "£6.50"}, {"123456" => 650}))
          point_of_sale.on_barcode "654321"
 
          point_of_sale.on_total

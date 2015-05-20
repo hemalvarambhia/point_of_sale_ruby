@@ -1,13 +1,14 @@
 class ProductCatalogue
-  def initialize(products)
-    @products = products  
+  def initialize(prices_as_txt_by_barcode, prices_in_pence_by_barcode)
+    @prices_as_txt_by_barcode = prices_as_txt_by_barcode
+    @prices_in_pence_by_barcode = prices_in_pence_by_barcode   
   end
  
   def contains?(barcode)
-    @products.has_key?(barcode)
+    @prices_as_txt_by_barcode.has_key?(barcode)
   end
 
   def price_from_barcode(barcode)
-    @products[barcode]
+    @prices_as_txt_by_barcode[barcode]
   end
 end

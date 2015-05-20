@@ -2,7 +2,7 @@
 require 'product_catalogue'
 
 class PointOfSale
-  def initialize(display, product_catalogue = ProductCatalogue.new({}))
+  def initialize(display, product_catalogue = ProductCatalogue.new({}, {}))
     @display = display
     @catalogue = product_catalogue
     @scanned_price = ""
