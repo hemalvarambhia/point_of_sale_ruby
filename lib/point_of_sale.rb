@@ -33,7 +33,7 @@ class PointOfSale
 
   private
   def price_from_catalogue(barcode)
-    @catalogue.price_from_barcode(barcode)
+    @catalogue.find_then_format_price_from_barcode(barcode)
   end
 
   def format_monetary_amount(price)

@@ -8,7 +8,7 @@ class ProductCatalogue
     @prices_as_txt_by_barcode.has_key?(barcode)
   end
 
-  def price_from_barcode(barcode)
+  def find_then_format_price_from_barcode(barcode)
     @prices_as_txt_by_barcode[barcode]
   end
 end
