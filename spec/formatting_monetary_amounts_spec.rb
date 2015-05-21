@@ -4,8 +4,10 @@ describe "Formatting monetary amounts" do
   end
 
   context "simplest amount" do
-    it "formats the amount correctly" do
-      expect(format(789)).to eq("£7.89")
+    [[789, "£7.89"]].each do |price_in_pence, expected_formatted_price|
+      it "formats #{price_in_pence} as #{expected_formatted_price}" do
+        expect(format(price_in_pence)).to eq(expected_formatted_price)
+      end
     end
   end
 end
