@@ -18,7 +18,7 @@ class ProductCatalogue
     price
   end
 
-  def find_then_format_price_from_barcode(barcode)
-    format @prices_in_pence_by_barcode[barcode]
-  end
+  def find_price barcode
+    @prices_in_pence_by_barcode[barcode]
+  end 
 end
