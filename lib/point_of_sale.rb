@@ -34,6 +34,6 @@ class PointOfSale
   private
   def price_from_catalogue(barcode)
     price_in_pence = @catalogue.find_price barcode
-    @display.format price_in_pence
+    Display.format price_in_pence
   end
 end

@@ -25,7 +25,7 @@ class Display
     @text = text
   end
 
-  def format(price_in_pence)
+  def self.format(price_in_pence)
     price = "%.2f" % (price_in_pence.to_f/100.0)
     pounds, pence = price.split('.')
     pounds = pounds.reverse.scan(/\d{1,3}/).join(",").reverse
