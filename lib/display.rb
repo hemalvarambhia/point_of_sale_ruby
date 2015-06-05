@@ -6,7 +6,7 @@ class Display
   end
 
   def total price
-    @text = "Total: #{price}"
+    @text = "Total: #{Display.format(price)}"
   end
   
   def no_sale_yet
