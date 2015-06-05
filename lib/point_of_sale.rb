@@ -11,7 +11,7 @@ class PointOfSale
   def on_total
     sale_in_progress = @scanned_item_prices_in_cents.any?
     if sale_in_progress
-      @display.total @scanned_item_prices_in_cents.to_enum.next
+      @display.total @scanned_item_prices_in_cents.each.next
     else
       @display.no_sale_yet
     end
