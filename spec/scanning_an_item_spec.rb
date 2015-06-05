@@ -10,7 +10,7 @@ describe "Scanning an item" do
     }
    catalogue_in_pence = {
       "123456" => 150,
-      "2468100" => 500
+      "246810" => 500
    } 
    @display = Display.new
    product_catalogue = ProductCatalogue.new(catalogue, catalogue_in_pence)

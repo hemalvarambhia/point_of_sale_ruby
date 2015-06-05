@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Display
   attr_accessor :text
   def initialize
@@ -22,5 +23,14 @@ class Display
   
   def error text
     @text = text
+  end
+
+  def format(price_in_pence)
+    price = "%.2f" % (price_in_pence.to_f/100.0)
+    pounds, pence = price.split('.')
+    pounds = pounds.reverse.scan(/\d{1,3}/).join(",").reverse
+    price = "£#{pounds}.#{pence}"
+     
+    price
   end
 end
