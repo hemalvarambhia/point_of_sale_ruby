@@ -13,7 +13,7 @@ describe "Scanning an item" do
       "246810" => 500
    } 
    @display = Display.new
-   product_catalogue = ProductCatalogue.new(catalogue, catalogue_in_pence)
+   product_catalogue = ProductCatalogue.new(catalogue_in_pence)
    @point_of_sale = PointOfSale.new(@display, product_catalogue)
  end
 

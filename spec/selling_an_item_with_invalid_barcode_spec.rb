@@ -5,7 +5,7 @@ require_relative '../lib/display'
 describe "Selling an item with an invalid barcode" do
  before :each do
    @display = Display.new
-   product_catalogue = ProductCatalogue.new({}, {})
+   product_catalogue = ProductCatalogue.new({})
    @point_of_sale = PointOfSale.new(@display, product_catalogue)
  end
 

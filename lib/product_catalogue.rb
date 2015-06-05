@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class ProductCatalogue
-  def initialize(prices_as_txt_by_barcode, prices_in_pence_by_barcode)
+  def initialize(prices_in_pence_by_barcode)
     @prices_in_pence_by_barcode = prices_in_pence_by_barcode   
   end
  
