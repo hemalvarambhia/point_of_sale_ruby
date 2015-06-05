@@ -17,10 +17,6 @@ class Display
     print(Display.format(price_in_pence))
   end
 
-  def print price
-    @text = price
-  end
-
   def product_not_found
     @text = "Product not found"
   end
@@ -36,5 +32,10 @@ class Display
     price = "£#{pounds}.#{pence}"
      
     price
+  end
+
+  private
+  def print price
+    @text = price
   end
 end
