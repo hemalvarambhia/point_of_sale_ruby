@@ -24,16 +24,11 @@ class PointOfSale
     end
 
     if @catalogue.contains?(barcode)
-      @scanned_price = price_from_catalogue barcode
-      @display.print @scanned_price
+      price_in_pence = @catalogue.find_price barcode
+      @scanned_price = Display.format price_in_pence
+      @display.display_price(price_in_pence)
     else
       @display.product_not_found
     end
-  end
-
-  private
-  def price_from_catalogue(barcode)
-    price_in_pence = @catalogue.find_price barcode
-    Display.format price_in_pence
   end
 end

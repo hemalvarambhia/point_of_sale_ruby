@@ -13,6 +13,10 @@ class Display
     @text = "No sale made yet. Begin by scanning an item."
   end
 
+  def display_price price_in_pence
+    print(Display.format(price_in_pence))
+  end
+
   def print price
     @text = price
   end
