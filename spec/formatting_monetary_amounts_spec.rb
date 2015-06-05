@@ -1,13 +1,5 @@
+require_relative '../lib/display'
 describe "Formatting monetary amounts" do
-  def format(price_in_pence)
-    price = "%.2f" % (price_in_pence.to_f/100.0)
-    pounds, pence = price.split('.')
-    pounds = pounds.reverse.scan(/\d{1,3}/).join(",").reverse
-    price = "£#{pounds}.#{pence}"
-     
-    price
-  end
-
   context "simplest amount" do
     [
        [789, "£7.89"], 
@@ -20,7 +12,7 @@ describe "Formatting monetary amounts" do
        [210832281, "£2,108,322.81"]
     ].each do |price_in_pence, expected_formatted_price|
       it "formats #{price_in_pence} as #{expected_formatted_price}" do
-        expect(format(price_in_pence)).to eq(expected_formatted_price)
+        expect(Display.format(price_in_pence)).to eq(expected_formatted_price)
       end
     end
   end
