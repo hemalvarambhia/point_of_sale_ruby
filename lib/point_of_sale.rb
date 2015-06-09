@@ -11,7 +11,7 @@ class PointOfSale
   def on_total
     sale_in_progress = @scanned_item_prices_in_cents.any?
     if sale_in_progress
-      @display.total purchase_total(@scanned_item_prices_in_cents)
+      @display.total PointOfSale.purchase_total(@scanned_item_prices_in_cents)
     else
       @display.no_sale_yet
     end
@@ -32,8 +32,7 @@ class PointOfSale
     end
   end
 
-  private
-  def purchase_total(purchase_item_prices)
-    purchase_item_prices.each.next
+  def self.purchase_total(purchase_item_prices)
+    purchase_item_prices.reduce(:+)
   end
 end

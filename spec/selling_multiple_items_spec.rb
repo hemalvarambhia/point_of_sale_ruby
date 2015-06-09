@@ -64,7 +64,6 @@ describe "Selling multiple items" do
 
   context "all items found" do
     it "displays the total cost of the items scanned" do
-      skip {
        display = Display.new
        point_of_sale = PointOfSale.new(display, ProductCatalogue.new(
           "654321"=> 200, "235711" => 350, "246810" => 100))
@@ -75,7 +74,6 @@ describe "Selling multiple items" do
        point_of_sale.on_total
 
        expect(display.text).to eq("Total: £6.50")
-     }
     end
   end
 end
