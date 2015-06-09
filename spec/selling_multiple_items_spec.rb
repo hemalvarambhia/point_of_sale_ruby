@@ -92,7 +92,7 @@ describe "Selling multiple items" do
     end
   end
 
-  context "one product has no barcode" do
+  context "one product has an empty barcode" do
     it "displays the total cost of the items that have barcodes" do
       display = Display.new
        point_of_sale = PointOfSale.new(display, ProductCatalogue.new(
