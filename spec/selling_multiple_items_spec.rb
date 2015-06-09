@@ -41,4 +41,24 @@ describe "Selling multiple items" do
       end
     end
   end
+
+  context "all items not found" do
+    it "tells the user no sale has been made yet" do
+       display = Display.new
+       point_of_sale = PointOfSale.new(display, catalogue_without_barcodes(
+          "654321", "235711", "246810"))
+       point_of_sale.on_barcode "654321"
+       point_of_sale.on_barcode "235711"
+       point_of_sale.on_barcode "246810"
+
+       point_of_sale.on_total
+
+       expect(display.text).to eq("No sale made yet. Begin by scanning an item.")
+    end
+
+    private
+    def catalogue_without_barcodes(*barcodes)
+     ProductCatalogue.new({})
+    end
+  end
 end
