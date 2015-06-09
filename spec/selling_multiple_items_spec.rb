@@ -91,4 +91,19 @@ describe "Selling multiple items" do
        expect(display.text).to eq("Total: £5.51")    
     end
   end
+
+  context "one product has no barcode" do
+    it "displays the total cost of the items that have barcodes" do
+      display = Display.new
+       point_of_sale = PointOfSale.new(display, ProductCatalogue.new(
+          "654321"=> 400, "235711" => 350, "246810" => 111))
+       point_of_sale.on_barcode "654321"
+       point_of_sale.on_barcode ""
+       point_of_sale.on_barcode "246810"
+
+       point_of_sale.on_total
+
+       expect(display.text).to eq("Total: £5.11")
+    end
+  end
 end
