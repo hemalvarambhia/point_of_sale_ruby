@@ -16,6 +16,11 @@ describe "SellOneItemController" do
     end
 
     def on_barcode barcode
+      if barcode.empty?
+        @display.empty_barcode_message
+	return
+      end
+
       price = @catalogue.find_price barcode
       if price.nil?
         @display.product_not_found_message barcode
@@ -47,6 +52,17 @@ describe "SellOneItemController" do
       sale_controller = SaleController.new(display, catalogue)
 
       sale_controller.on_barcode "::product not found::"
+    end
+  end
+
+  context "empty barcode" do
+    it "tells the user that no barcode was scanned" do
+      display = double("display")
+      
+      expect(display).to receive(:empty_barcode_message)
+      
+      sale_controller = SaleController.new(display, nil)
+      sale_controller.on_barcode ""
     end
   end
 end
