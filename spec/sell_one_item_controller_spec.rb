@@ -16,6 +16,7 @@ describe "SellOneItemController" do
     end
 
     def on_barcode barcode
+      # SMELL: Should the method ever receive blank barcodes? 
       if barcode.empty?
         @display.empty_barcode_message
 	return
