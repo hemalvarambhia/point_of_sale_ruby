@@ -16,7 +16,12 @@ describe "SellOneItemController" do
     end
 
     def on_barcode barcode
-      @display.display_price @catalogue.find_price(barcode)
+      price = @catalogue.find_price barcode
+      if price.nil?
+        @display.product_not_found_message barcode
+      else
+        @display.display_price price
+      end
     end
   end
 
@@ -30,6 +35,18 @@ describe "SellOneItemController" do
       sale_controller = SaleController.new(display, catalogue)
       
       sale_controller.on_barcode "12345"
+    end
+  end
+
+  context "product not found" do
+    it "tells the user the product was not found" do
+      display = double("display")
+      catalogue = double("catalogue")
+      allow(catalogue).to receive(:find_price).with("::product not found::").and_return nil
+      expect(display).to receive(:product_not_found_message).with("::product not found::")
+      sale_controller = SaleController.new(display, catalogue)
+
+      sale_controller.on_barcode "::product not found::"
     end
   end
 end
