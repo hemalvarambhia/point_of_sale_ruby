@@ -28,6 +28,7 @@ describe "SellOneItemController" do
       allow(catalogue).to receive(:find_price).with("12345").and_return irrelevant_price
       expect(display).to receive(:display_price).with( irrelevant_price )
       sale_controller = SaleController.new(display, catalogue)
+      
       sale_controller.on_barcode "12345"
     end
   end
