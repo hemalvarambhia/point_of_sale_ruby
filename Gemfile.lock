@@ -70,3 +70,6 @@ DEPENDENCIES
   guard-bundler
   guard-rspec
   rspec (~> 3.0)
+
+BUNDLED WITH
+   1.10.3
