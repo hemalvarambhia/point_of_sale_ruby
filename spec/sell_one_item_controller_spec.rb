@@ -1,14 +1,5 @@
+require 'price'
 describe "SellOneItemController" do
-  class Price
-    def self.pence value
-      Price.new
-    end
-
-    def to_s
-      return "a price"
-    end
-  end
-
   class SaleController
     def initialize(display, catalogue)
       @display = display
