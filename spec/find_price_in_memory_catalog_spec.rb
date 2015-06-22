@@ -1,15 +1,6 @@
 require 'price'
+require 'in_memory_catalogue'
 describe "In memory catalogue" do
-  class InMemoryCatalogue
-    def initialize(prices_by_barcode)
-      @prices_by_barcode = prices_by_barcode
-    end
-
-    def find_price barcode
-      @prices_by_barcode[barcode]
-    end
-  end
-
   describe "#find_price" do
     context "product is found" do
       it "returns the price for the barcode" do
