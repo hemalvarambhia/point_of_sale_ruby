@@ -1,6 +1,6 @@
 require 'price'
 require 'in_memory_catalogue'
-require 'shared_examples_for_catalogue'
+require 'catalogue_contract'
 describe InMemoryCatalogue do
   def catalogue_with(barcode, price)
     InMemoryCatalogue.new({
