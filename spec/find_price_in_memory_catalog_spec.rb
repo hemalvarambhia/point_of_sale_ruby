@@ -18,5 +18,12 @@ describe "In memory catalogue" do
         expect(catalogue.find_price("12345")).to eq(found_price)
       end
     end
+
+    context "product is not found" do
+      it "returns nothing" do
+        catalogue = InMemoryCatalogue.new({})
+        expect(catalogue.find_price("246810")).to be_nil
+      end
+    end
   end
 end
