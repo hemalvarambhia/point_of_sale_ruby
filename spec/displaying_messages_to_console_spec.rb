@@ -6,21 +6,21 @@ describe "Displaying messages to the console" do
   end
 
   before :each do
-    @production_output_console = StringIO.new
+    @old_console = $stdout
+    @canvas = StringIO.new 
+    $stdout = @canvas
   end
 
   after :each do
-    @production_output_console.truncate 0
+    @canvas.truncate 0
+    $stdout = @old_console
   end
 
   context "when the product is not found" do
     it "tells the user there is no product for a barcode" do
-      canvas = StringIO.new
-      $stdout = canvas
-
       ConsoleDisplay.new.product_not_found_message("654321")       
      
-      expect(text_from(canvas)).to eq("Product not found for 654321")
+      expect(text_from(@canvas)).to eq("Product not found for 654321")
     end    
   end
 
