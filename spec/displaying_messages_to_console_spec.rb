@@ -1,14 +1,5 @@
+require 'console_display'
 describe "Displaying messages to the console" do
-  class ConsoleDisplay
-    def product_not_found_message barcode
-      p "Product not found for #{barcode}"
-    end
-
-    def empty_barcode_message
-      p "Scanning error: empty barcode"
-    end
-  end
-
   before :each do
     @canvas = StringIO.new 
     $stdout = @canvas
