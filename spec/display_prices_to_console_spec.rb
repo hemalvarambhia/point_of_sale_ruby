@@ -8,10 +8,6 @@ describe "Formatting monetary amounts" do
      
     price
   end
-
-  def price_in_pounds(pence)
-    pence.to_f/100.0
-  end
  
   context "simplest amount" do
     [
