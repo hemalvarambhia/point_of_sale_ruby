@@ -1,7 +1,7 @@
 require 'price'
 require 'console_display'
 
-describe "Displaying monetary amounts to the console" do
+describe "Displayinh monetary amounts to the console" do
   before :each do
     @canvas = StringIO.new
     $stdout = @canvas
