@@ -1,13 +1,14 @@
+# coding: utf-8
 class ConsoleDisplay
   def display_price price
     p format price
   end
-
-  def product_not_found_message barcode
+  
+  def display_product_not_found_message barcode
     p "Product not found for #{barcode}"
   end
 
-  def empty_barcode_message
+  def display_empty_barcode_message
     p "Scanning error: empty barcode"
   end
 
