@@ -1,5 +1,5 @@
 # coding: utf-8
-class ConsoleDisplay
+class EnglishLanguageConsoleDisplay
   PRICE_FORMAT = lambda { |price_in_pounds|
     price = "%.2f" % (price_in_pounds)
     pounds, pence = price.split('.')

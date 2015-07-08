@@ -1,4 +1,4 @@
-require 'console_display'
+require 'english_language_console_display'
 describe "Displaying messages to the console" do
   before :each do
     @canvas = StringIO.new 
@@ -11,19 +11,19 @@ describe "Displaying messages to the console" do
   end
 
   it "tells the user there is no product for a barcode" do
-    ConsoleDisplay.new.display_product_not_found_message("654321")       
+    EnglishLanguageConsoleDisplay.new.display_product_not_found_message("654321")       
      
     expect(text_from(@canvas)).to eq(["Product not found for 654321"])
   end
 
   it "tells the user the bacode was empty" do 
-    ConsoleDisplay.new.display_empty_barcode_message    
+    EnglishLanguageConsoleDisplay.new.display_empty_barcode_message    
   
     expect(text_from(@canvas)).to eq(["Scanning error: empty barcode"])
   end
 
   it "displays multiple messages" do
-    console_display = ConsoleDisplay.new
+    console_display = EnglishLanguageConsoleDisplay.new
 
     console_display.display_empty_barcode_message
     console_display.display_product_not_found_message "235711"
