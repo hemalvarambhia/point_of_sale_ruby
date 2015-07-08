@@ -18,18 +18,23 @@ class ConsoleDisplay
   } 
 
   def display_price price
-    p display_message(PRICE_FORMAT, price)
+    display_message(PRICE_FORMAT, price)
   end
   
   def display_product_not_found_message barcode
-    p display_message(PRODUCT_NOT_FOUND_FORMAT, barcode)
+    display_message(PRODUCT_NOT_FOUND_FORMAT, barcode)
   end
 
   def display_empty_barcode_message
-    p display_message(EMPTY_BARCODE_FORMAT, Object.new)
+    display_message(EMPTY_BARCODE_FORMAT, Object.new)
   end
 
+  private
   def display_message(format, objects)
-    format.call objects
+    p format_message(format, objects)
+  end
+
+  def format_message(format, object)
+    format.call object
   end
 end
