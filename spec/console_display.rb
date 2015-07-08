@@ -18,19 +18,19 @@ class ConsoleDisplay
   } 
 
   def display_price price
-    display_message(PRICE_FORMAT, price)
+    render(PRICE_FORMAT, price)
   end
   
   def display_product_not_found_message barcode
-    display_message(PRODUCT_NOT_FOUND_FORMAT, barcode)
+    render(PRODUCT_NOT_FOUND_FORMAT, barcode)
   end
 
   def display_empty_barcode_message
-    display_message(EMPTY_BARCODE_FORMAT, Object.new)
+    render(EMPTY_BARCODE_FORMAT, Object.new)
   end
 
   private
-  def display_message(format, objects)
+  def render(format, objects)
     p merge_template(format, objects)
   end
 
