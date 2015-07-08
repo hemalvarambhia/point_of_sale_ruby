@@ -1,7 +1,7 @@
-require_relative "./sale_controller"
-require_relative './english_language_console_display'
-require_relative './in_memory_catalogue'
-require_relative './price'
+require "./sale_controller.rb"
+require './english_language_console_display.rb'
+require './in_memory_catalogue.rb'
+require './price.rb'
 
 sale_controller = SaleController.new(
   EnglishLanguageConsoleDisplay.new, 
