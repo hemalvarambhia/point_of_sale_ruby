@@ -1,1 +1,1 @@
-p "Hello, world!"
+sale_controller = SaleController.new(InMemoryCatalogue.new, EnglishLanguageConsoleDisplay.new)
