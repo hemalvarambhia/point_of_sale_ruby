@@ -31,10 +31,10 @@ class ConsoleDisplay
 
   private
   def display_message(format, objects)
-    p format_message(format, objects)
+    p merge_template(format, objects)
   end
 
-  def format_message(format, object)
+  def merge_template(format, object)
     format.call object
   end
 end
