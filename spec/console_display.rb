@@ -1,7 +1,7 @@
 # coding: utf-8
 class ConsoleDisplay
-  PRICE_FORMAT = lambda { |price|
-    price = "%.2f" % (price.in_pounds)
+  PRICE_FORMAT = lambda { |price_in_pounds|
+    price = "%.2f" % (price_in_pounds)
     pounds, pence = price.split('.')
     pounds = pounds.reverse.scan(/\d{1,3}/).join(",").reverse
     price = "£#{pounds}.#{pence}"
@@ -18,7 +18,7 @@ class ConsoleDisplay
   } 
 
   def display_price price
-    render(PRICE_FORMAT, price)
+    render(PRICE_FORMAT, price.in_pounds)
   end
   
   def display_product_not_found_message barcode
