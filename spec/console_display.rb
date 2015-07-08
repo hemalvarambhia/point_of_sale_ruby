@@ -5,7 +5,7 @@ class ConsoleDisplay
   end
   
   def display_product_not_found_message barcode
-    p "Product not found for #{barcode}"
+    p "Product not found for %s" % barcode
   end
 
   def display_empty_barcode_message

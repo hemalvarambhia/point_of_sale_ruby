@@ -11,13 +11,13 @@ describe "Displaying messages to the console" do
   end
 
   it "tells the user there is no product for a barcode" do
-    ConsoleDisplay.new.product_not_found_message("654321")       
+    ConsoleDisplay.new.display_product_not_found_message("654321")       
      
     expect(text_from(@canvas)).to eq(["Product not found for 654321"])
   end
 
   it "tells the user the bacode was empty" do 
-    ConsoleDisplay.new.empty_barcode_message    
+    ConsoleDisplay.new.display_empty_barcode_message    
   
     expect(text_from(@canvas)).to eq(["Scanning error: empty barcode"])
   end
@@ -25,9 +25,9 @@ describe "Displaying messages to the console" do
   it "displays multiple messages" do
     console_display = ConsoleDisplay.new
 
-    console_display.empty_barcode_message
-    console_display.product_not_found_message "235711"
-    console_display.empty_barcode_message
+    console_display.display_empty_barcode_message
+    console_display.display_product_not_found_message "235711"
+    console_display.display_empty_barcode_message
 
     expect(text_from(@canvas)).to eq([
         "Scanning error: empty barcode", 
