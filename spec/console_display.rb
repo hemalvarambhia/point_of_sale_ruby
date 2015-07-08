@@ -13,7 +13,7 @@ class ConsoleDisplay
     "Product not found for %s" % barcode
   }
 
-  EMPTY_BARCODE_FORMAT = lambda {
+  EMPTY_BARCODE_FORMAT = lambda {|no_object|
     "Scanning error: empty barcode"
   } 
 
@@ -26,17 +26,6 @@ class ConsoleDisplay
   end
 
   def display_empty_barcode_message
-    p EMPTY_BARCODE_FORMAT.call
+    p EMPTY_BARCODE_FORMAT.call Object.new
   end
-
-  private
-  def format(price)
-    price = "%.2f" % (price.in_pounds)
-    pounds, pence = price.split('.')
-    pounds = pounds.reverse.scan(/\d{1,3}/).join(",").reverse
-    price = "£#{pounds}.#{pence}"
-     
-    price
-  end
-
 end
