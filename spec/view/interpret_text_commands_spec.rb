@@ -1,13 +1,13 @@
 describe "Interpreting text commands" do
-  class TextCommandInterpreter
+  class TextProcessorAndCommandInterpreter
     def initialize listener
       @listener = listener
     end
     
     def process stream
-      stream.each_line { |line|
-        @listener.on_barcode(line.strip)
-      }
+      stream.collect{|line| line.strip }
+        .select{ |line| !line.empty? }
+        .each { |line| @listener.on_barcode(line.strip)}
     end
   end
   
@@ -17,7 +17,8 @@ describe "Interpreting text commands" do
 
       expect(barcode_listener).to_not receive(:on_barcode)
 
-      TextCommandInterpreter.new(barcode_listener).process StringIO.new("")
+      TextProcessorAndCommandInterpreter.new(barcode_listener).
+        process StringIO.new("")
     end
   end
 
@@ -27,7 +28,8 @@ describe "Interpreting text commands" do
 
       expect(barcode_listener).to receive(:on_barcode).with("::barcode::").once
 
-      TextCommandInterpreter.new(barcode_listener).process StringIO.new("::barcode::\n")
+      TextProcessorAndCommandInterpreter.new(barcode_listener).
+        process StringIO.new("::barcode::\n")
     end
   end
 
@@ -35,11 +37,27 @@ describe "Interpreting text commands" do
     it "process all of them" do
        barcode_listener = double("BarcodeScannedListener")
 
-       expect(barcode_listener).to receive(:on_barcode).with("12345")
-       expect(barcode_listener).to receive(:on_barcode).with("23456")
-       expect(barcode_listener).to receive(:on_barcode).with("34567")
+       expect(barcode_listener).to receive(:on_barcode).with("::barcode 1::")
+       expect(barcode_listener).to receive(:on_barcode).with("::barcode 2::")
+       expect(barcode_listener).to receive(:on_barcode).with("::barcode 3::")
 
-       TextCommandInterpreter.new(barcode_listener).process StringIO.new("12345\n23456\n34567")
+       TextProcessorAndCommandInterpreter.new(barcode_listener).
+         process StringIO.new("::barcode 1::\n::barcode 2::\n::barcode 3::")
+    end
+  end
+
+  # SMELL This test checks we don't interpret empty commands but
+  # which seems to require running the interpreter
+  context "several barcodes interspersed with empty lines" do
+    it "processes only the barcodes" do
+      barcode_listener = double("BarcodeScannedListener")
+
+      expect(barcode_listener).to receive(:on_barcode).with("::barcode 1::")
+      expect(barcode_listener).to receive(:on_barcode).with("::barcode 2::")
+      expect(barcode_listener).to receive(:on_barcode).with("::barcode 3::")
+
+      TextProcessorAndCommandInterpreter.new(barcode_listener).
+        process StringIO.new("\n::barcode 1::\n\n::barcode 2::\n   \n\t\n::barcode 3::\n\n")
     end
   end
 end
