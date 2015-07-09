@@ -1,3 +1,5 @@
+require 'stringio'
+require './text_processor_and_command_interpreter.rb'
 require "./sale_controller.rb"
 require './english_language_console_display.rb'
 require './in_memory_catalogue.rb'
@@ -10,8 +12,9 @@ sale_controller = SaleController.new(
    "23456" => Price.pence(1250)
   })
 )
+text_processor_and_command_interpreter =
+  TextProcessorAndCommandInterpreter.new sale_controller
+reader = StringIO.new("12345\n23456\n99999\n\n")
 
-sale_controller.on_barcode "12345"
-sale_controller.on_barcode "23456"
-sale_controller.on_barcode "99999"
-sale_controller.on_barcode ""
+text_processor_and_command_interpreter.process reader
+
