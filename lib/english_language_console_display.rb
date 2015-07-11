@@ -9,6 +9,13 @@ class EnglishLanguageConsoleDisplay
     price
   }
 
+  class ConsolePostOffice
+    def send_message text
+      p text
+    end
+  end
+
+  
   PRODUCT_NOT_FOUND_FORMAT = lambda { |barcode|
     "Product not found for %s" % barcode
   }
@@ -31,7 +38,7 @@ class EnglishLanguageConsoleDisplay
 
   private
   def render(format, objects)
-    p merge_template(format, objects)
+    ConsolePostOffice.new.send_message merge_template(format, objects)
   end
 
   def merge_template(format, object)
