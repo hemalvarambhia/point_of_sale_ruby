@@ -23,7 +23,7 @@ describe "Displaying messages to the console" do
   end
 
   it "displays multiple messages" do
-    console_display = EnglishLanguageConsoleDisplay.new
+    console_display = EnglishLanguageConsoleDisplay.new 
 
     console_display.display_empty_barcode_message
     console_display.display_product_not_found_message "235711"

@@ -1,4 +1,6 @@
 # coding: utf-8
+require 'console_post_office'
+
 class EnglishLanguageConsoleDisplay
   PRICE_FORMAT = lambda { |price_in_pounds|
     price = "%.2f" % (price_in_pounds)
@@ -8,13 +10,6 @@ class EnglishLanguageConsoleDisplay
 
     price
   }
-
-  class ConsolePostOffice
-    def send_message text
-      p text
-    end
-  end
-
   
   PRODUCT_NOT_FOUND_FORMAT = lambda { |barcode|
     "Product not found for %s" % barcode
@@ -22,7 +17,11 @@ class EnglishLanguageConsoleDisplay
 
   EMPTY_BARCODE_FORMAT = lambda {|no_object|
     "Scanning error: empty barcode"
-  } 
+  }
+
+  def initialize post_office = ConsolePostOffice.new
+    @post_office = post_office
+  end
 
   def display_price price
     render(PRICE_FORMAT, price.in_pounds)
