@@ -1,7 +1,5 @@
 # coding: utf-8
-require 'console_post_office'
-
-class EnglishLanguageConsoleDisplay
+class EnglishLanguageTextDisplay
   PRICE_FORMAT = lambda { |price_in_pounds|
     price = "%.2f" % (price_in_pounds)
     pounds, pence = price.split('.')
@@ -19,7 +17,7 @@ class EnglishLanguageConsoleDisplay
     "Scanning error: empty barcode"
   }
 
-  def initialize post_office = ConsolePostOffice.new
+  def initialize post_office
     @post_office = post_office
   end
 
@@ -44,3 +42,4 @@ class EnglishLanguageConsoleDisplay
     format.call object
   end
 end
+
