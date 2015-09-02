@@ -28,8 +28,9 @@ describe "Displaying monetary amounts to the console" do
        [210832281, "£2,108,322.81"]
     ].each do |price_in_pence, expected_formatted_price|
       it "formats #{price_in_pence} as #{expected_formatted_price}" do
-        EnglishLanguageConsoleDisplay.new.display_price Price.pence price_in_pence 
-
+        EnglishLanguageConsoleDisplay.new.display_scanned_product_price_message(
+	  Price.pence price_in_pence) 
+	
         expect(text_from(@canvas)).to eq([expected_formatted_price])
       end
     end

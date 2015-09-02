@@ -17,7 +17,7 @@ class EnglishLanguageConsoleDisplay
     "Scanning error: empty barcode"
   } 
 
-  def display_price price
+  def display_scanned_product_price_message price
     render(PRICE_FORMAT, price.in_pounds)
   end
   
