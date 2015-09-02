@@ -39,7 +39,10 @@ describe "SellOneItemController" do
       expect(display).to receive(:display_empty_barcode_message)
       
       sale_controller = SaleController.new(display, nil)
-      sale_controller.on_barcode ""
+      sale_view = sale_controller.on_barcode ""
+
+      expect(sale_view.view_name).to eq("Scanned Empty Barcode Message")
+      expect(sale_view.placeholder_values).to eq({})
     end
   end
 end

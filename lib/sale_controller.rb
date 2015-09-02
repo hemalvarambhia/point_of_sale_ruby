@@ -8,7 +8,9 @@ class SaleController
     # SMELL: Should the method ever receive blank barcodes?
     if barcode.empty?
       @display.display_empty_barcode_message
-      return SaleView.new
+      return SaleView.new(
+          "Scanned Empty Barcode Message", 
+          {})
     end
 
     price = @catalogue.find_price barcode
