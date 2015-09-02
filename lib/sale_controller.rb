@@ -15,7 +15,7 @@ class SaleController
     if price.nil?
       @display.display_product_not_found_message barcode
     else
-      @display.display_price price
+      @display.display_scanned_product_price_message price
     end
   end
 end
