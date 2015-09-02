@@ -1,6 +1,7 @@
+# coding: utf-8
 require 'price'
-require 'english_language_console_display'
-
+require 'english_language_text_display'
+require 'console_post_office'
 describe "Displaying monetary amounts to the console" do
   before :each do
     @canvas = StringIO.new
@@ -28,9 +29,8 @@ describe "Displaying monetary amounts to the console" do
        [210832281, "£2,108,322.81"]
     ].each do |price_in_pence, expected_formatted_price|
       it "formats #{price_in_pence} as #{expected_formatted_price}" do
-        EnglishLanguageConsoleDisplay.new.display_scanned_product_price_message(
-	  Price.pence price_in_pence) 
-	
+        EnglishLanguageTextDisplay.new(ConsolePostOffice.new).display_scanned_product_price_message(
+            Price.pence price_in_pence)
         expect(text_from(@canvas)).to eq([expected_formatted_price])
       end
     end
