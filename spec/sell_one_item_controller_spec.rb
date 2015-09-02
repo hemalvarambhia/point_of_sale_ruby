@@ -10,7 +10,10 @@ describe "SellOneItemController" do
       expect(display).to receive(:display_scanned_product_price_message).with( irrelevant_price )
       sale_controller = SaleController.new(display, catalogue)
       
-      sale_controller.on_barcode "::product found::"
+      sale_view = sale_controller.on_barcode "::product found::"
+
+      expect(sale_view.view_name).to eq("Scanned Product Price Message")
+      expect(sale_view.placeholder_values).to eq({"price" => irrelevant_price})
     end
   end
 
