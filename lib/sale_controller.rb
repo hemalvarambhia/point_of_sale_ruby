@@ -9,7 +9,7 @@ class SaleController
     if barcode.empty?
       @display.display_empty_barcode_message
       return SaleView.new(
-          "Scanned Empty Barcode Message", 
+          "Scanned Empty Barcode", 
           {})
     end
 
@@ -17,12 +17,12 @@ class SaleController
     if price.nil?
       @display.display_product_not_found_message barcode
       return SaleView.new(
-          "Product Not Found Message",
+          "Product Not Found",
           {"barcode" => barcode})
     else
       @display.display_scanned_product_price_message price
       return SaleView.new(
-          "Scanned Product Price Message",
+          "Scanned Product Price",
           {"price" => price})
     end
   end

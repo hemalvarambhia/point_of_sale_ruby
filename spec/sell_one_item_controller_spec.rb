@@ -12,7 +12,7 @@ describe "SellOneItemController" do
       
       sale_view = sale_controller.on_barcode "::product found::"
 
-      expect(sale_view.view_name).to eq("Scanned Product Price Message")
+      expect(sale_view.view_name).to eq("Scanned Product Price")
       expect(sale_view.placeholder_values).to eq({"price" => irrelevant_price})
     end
   end
@@ -27,7 +27,7 @@ describe "SellOneItemController" do
 
       sale_view = sale_controller.on_barcode "::product not found::"
    
-      expect(sale_view.view_name).to eq("Product Not Found Message")
+      expect(sale_view.view_name).to eq("Product Not Found")
       expect(sale_view.placeholder_values).to eq({"barcode" => "::product not found::"})
     end
   end
@@ -41,7 +41,7 @@ describe "SellOneItemController" do
       sale_controller = SaleController.new(display, nil)
       sale_view = sale_controller.on_barcode ""
 
-      expect(sale_view.view_name).to eq("Scanned Empty Barcode Message")
+      expect(sale_view.view_name).to eq("Scanned Empty Barcode")
       expect(sale_view.placeholder_values).to eq({})
     end
   end
