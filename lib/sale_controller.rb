@@ -14,14 +14,15 @@ class SaleController
     price = @catalogue.find_price barcode
     if price.nil?
       @display.display_product_not_found_message barcode
+      return SaleView.new(
+          "Product Not Found Message",
+          {"barcode" => barcode})
     else
       @display.display_scanned_product_price_message price
       return SaleView.new(
-               "Scanned Product Price Message", 
-               {"price" => price})
+          "Scanned Product Price Message",
+          {"price" => price})
     end
- 
-    return SaleView.new
   end
 end
 

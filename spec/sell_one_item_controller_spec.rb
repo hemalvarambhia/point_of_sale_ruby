@@ -25,7 +25,10 @@ describe "SellOneItemController" do
       expect(display).to receive(:display_product_not_found_message).with("::product not found::")
       sale_controller = SaleController.new(display, catalogue)
 
-      sale_controller.on_barcode "::product not found::"
+      sale_view = sale_controller.on_barcode "::product not found::"
+   
+      expect(sale_view.view_name).to eq("Product Not Found Message")
+      expect(sale_view.placeholder_values).to eq({"barcode" => "::product not found::"})
     end
   end
 
