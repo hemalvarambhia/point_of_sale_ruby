@@ -5,6 +5,13 @@ require './english_language_text_display.rb'
 require './in_memory_catalogue.rb'
 require './price.rb'
 require './console_post_office.rb'
+
+class NullViewRenderer
+  def render sale_view
+
+  end
+end
+
 sale_controller = SaleController.new(
   EnglishLanguageTextDisplay.new(ConsolePostOffice.new) , 
   InMemoryCatalogue.new({
@@ -13,7 +20,9 @@ sale_controller = SaleController.new(
   })
 )
 text_processor_and_command_interpreter =
-  TextProcessorAndCommandInterpreter.new sale_controller
+  TextProcessorAndCommandInterpreter.new(
+   sale_controller,
+   NullViewRenderer.new)
 reader = StringIO.new("12345\n23456\n99999\n\n")
 
 text_processor_and_command_interpreter.process reader

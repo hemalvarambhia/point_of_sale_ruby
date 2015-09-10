@@ -1,6 +1,7 @@
 class TextProcessorAndCommandInterpreter
-   def initialize listener
+   def initialize(listener, renderer)
      @listener = listener
+     @renderer = renderer
    end
     
    def process stream
@@ -23,7 +24,8 @@ class TextProcessorAndCommandInterpreter
    end
 
    def interpret_line line
-     @listener.on_barcode line
+     sale_view = @listener.on_barcode line
+     @renderer.render sale_view
    end
 end
  
