@@ -32,10 +32,15 @@ class EnglishLanguageTextDisplay
   def display_empty_barcode_message
     render(EMPTY_BARCODE_FORMAT, Object.new)
   end
+  
+  def render_view sale_view
+    display_scanned_product_price_message(
+      sale_view.placeholder_values[:price])
+  end
 
   private
   def render(format, objects)
-    ConsolePostOffice.new.send_message merge_template(format, objects)
+    @post_office.send_message merge_template(format, objects)
   end
 
   def merge_template(format, object)
