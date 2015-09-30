@@ -34,8 +34,6 @@ describe "SellOneItemController" do
     it "tells the user that no barcode was scanned" do
       display = double("display")
       
-      expect(display).to receive(:display_empty_barcode_message)
-      
       sale_controller = SaleController.new(display, nil)
       sale_view = sale_controller.on_barcode ""
 
