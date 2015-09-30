@@ -21,7 +21,6 @@ describe "SellOneItemController" do
       display = double("display")
       catalogue = double("catalogue")
       allow(catalogue).to receive(:find_price).with("::product not found::").and_return nil
-      expect(display).to receive(:display_product_not_found_message).with("::product not found::")
       sale_controller = SaleController.new(display, catalogue)
 
       sale_view = sale_controller.on_barcode "::product not found::"

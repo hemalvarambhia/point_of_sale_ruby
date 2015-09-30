@@ -15,7 +15,6 @@ class SaleController
 
     price = @catalogue.find_price barcode
     if price.nil?
-      @display.display_product_not_found_message barcode
       return SaleView.new(
           "Product Not Found",
           {"barcode" => barcode})
