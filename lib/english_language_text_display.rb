@@ -39,6 +39,8 @@ class EnglishLanguageTextDisplay
     elsif sale_view.view_name == "Scanned Product Price"
       display_scanned_product_price_message(
         sale_view.placeholder_values[:price])
+    elsif sale_view.view_name == "Scanned Empty Barcode"
+      display_empty_barcode_message
     end
   end
 

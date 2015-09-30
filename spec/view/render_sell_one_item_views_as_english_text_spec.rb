@@ -23,4 +23,16 @@ describe "Rendering sale views in English" do
           "Product Not Found", {barcode: "5834958"}))
     end
   end
+
+  context "when barcode is empty" do
+    it "renders the empty barcode view" do
+      post_office = double("PostOffice")
+      expect(post_office).to receive(:send_message).with(
+        "Scanning error: empty barcode")
+
+      EnglishLanguageTextDisplay.new(post_office).render_view(
+        SaleView.new("Scanned Empty Barcode", {})
+      )
+    end
+  end
 end
