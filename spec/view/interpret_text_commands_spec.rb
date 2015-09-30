@@ -4,7 +4,7 @@ describe "Interpreting text commands" do
     it "does nothing" do
       barcode_listener = double("BarcodeScannedListener")
       renderer = double("Renderer")
-      allow(renderer).to receive(:render)
+      allow(renderer).to receive(:render_view)
       expect(barcode_listener).to_not receive(:on_barcode)
 
       TextProcessorAndCommandInterpreter.new(
@@ -18,7 +18,7 @@ describe "Interpreting text commands" do
     it "processes the barcode" do
       barcode_listener = double("BarcodeScannedListener")
       renderer = double("Renderer")
-      allow(renderer).to receive(:render)
+      allow(renderer).to receive(:render_view)
       expect(barcode_listener).to receive(:on_barcode).with("::barcode::").once
 
       TextProcessorAndCommandInterpreter.new(
@@ -32,7 +32,7 @@ describe "Interpreting text commands" do
     it "process all of them" do
        barcode_listener = double("BarcodeScannedListener")
        renderer = double("Renderer")
-       allow(renderer).to receive(:render)
+       allow(renderer).to receive(:render_view)
        expect(barcode_listener).to receive(:on_barcode).with("::barcode 1::")
        expect(barcode_listener).to receive(:on_barcode).with("::barcode 2::")
        expect(barcode_listener).to receive(:on_barcode).with("::barcode 3::")
@@ -50,7 +50,7 @@ describe "Interpreting text commands" do
     it "processes only the barcodes" do
       barcode_listener = double("BarcodeScannedListener")
       renderer = double("Renderer")
-      allow(renderer).to receive(:render)
+      allow(renderer).to receive(:render_view)
       expect(barcode_listener).to receive(:on_barcode).with("::barcode 1::")
       expect(barcode_listener).to receive(:on_barcode).with("::barcode 2::")
       expect(barcode_listener).to receive(:on_barcode).with("::barcode 3::")

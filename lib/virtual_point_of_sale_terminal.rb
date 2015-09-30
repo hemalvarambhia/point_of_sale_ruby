@@ -22,7 +22,7 @@ sale_controller = SaleController.new(
 text_processor_and_command_interpreter =
   TextProcessorAndCommandInterpreter.new(
    sale_controller,
-   NullViewRenderer.new)
+   EnglishLanguageTextDisplay.new(ConsolePostOffice.new))
 reader = StringIO.new("12345\n23456\n99999\n\n")
 
 text_processor_and_command_interpreter.process reader

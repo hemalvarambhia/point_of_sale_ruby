@@ -7,7 +7,7 @@ describe "Rendering a response view from the controller" do
      renderer = double("Renderer") 
      allow(barcode_scanned_listener).to receive(:on_barcode).
        and_return(controller_response_view)
-     expect(renderer).to receive(:render).
+     expect(renderer).to receive(:render_view).
        with(controller_response_view)
 
      process_scanned_barcode_command_with(

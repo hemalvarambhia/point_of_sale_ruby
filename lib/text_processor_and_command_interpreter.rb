@@ -25,7 +25,7 @@ class TextProcessorAndCommandInterpreter
 
    def interpret_line line
      sale_view = @listener.on_barcode line
-     @renderer.render sale_view
+     @renderer.render_view sale_view
    end
 end
  

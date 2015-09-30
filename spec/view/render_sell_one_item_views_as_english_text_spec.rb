@@ -14,7 +14,7 @@ describe "Rendering sale views in English" do
 
       EnglishLanguageTextDisplay.new(@post_office).render_view(
         SaleView.new(
-          "Scanned Product Price", {price: Price.pence(795)}))
+          "Scanned Product Price", {"price" => Price.pence(795)}))
     end
   end
   
@@ -24,7 +24,7 @@ describe "Rendering sale views in English" do
 
       EnglishLanguageTextDisplay.new(@post_office).render_view(
         SaleView.new(
-          "Product Not Found", {barcode: "5834958"}))
+          "Product Not Found", {"barcode" => "5834958"}))
     end
   end
 
