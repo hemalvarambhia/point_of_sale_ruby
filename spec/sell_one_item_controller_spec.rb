@@ -7,7 +7,6 @@ describe "SellOneItemController" do
       catalogue = double("catalogue")
       irrelevant_price = Price.pence 795
       allow(catalogue).to receive(:find_price).with("::product found::").and_return irrelevant_price
-      expect(display).to receive(:display_scanned_product_price_message).with( irrelevant_price )
       sale_controller = SaleController.new(display, catalogue)
       
       sale_view = sale_controller.on_barcode "::product found::"

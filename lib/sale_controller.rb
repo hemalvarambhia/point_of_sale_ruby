@@ -20,7 +20,6 @@ class SaleController
           "Product Not Found",
           {"barcode" => barcode})
     else
-      @display.display_scanned_product_price_message price
       return SaleView.new(
           "Scanned Product Price",
           {"price" => price})
