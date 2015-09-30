@@ -3,15 +3,11 @@ class SaleController
     @display = display
     @catalogue = catalogue
   end
-
+  
+# on_barcode does not attempt to detect '' (empty string)
+# Barcodes of non-standard/incorrect format will simply be
+# treated as products not found
   def on_barcode barcode
-    # SMELL: Should the method ever receive blank barcodes?
-    if barcode.empty?
-      return SaleView.new(
-          "Scanned Empty Barcode", 
-          {})
-    end
-
     price = @catalogue.find_price barcode
     if price.nil?
       return SaleView.new(

@@ -29,16 +29,4 @@ describe "SellOneItemController" do
       expect(sale_view.placeholder_values).to eq({"barcode" => "::product not found::"})
     end
   end
-
-  context "empty barcode" do
-    it "tells the user that no barcode was scanned" do
-      display = double("display")
-      
-      sale_controller = SaleController.new(display, nil)
-      sale_view = sale_controller.on_barcode ""
-
-      expect(sale_view.view_name).to eq("Scanned Empty Barcode")
-      expect(sale_view.placeholder_values).to eq({})
-    end
-  end
 end
