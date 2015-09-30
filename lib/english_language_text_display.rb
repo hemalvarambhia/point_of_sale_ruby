@@ -34,8 +34,12 @@ class EnglishLanguageTextDisplay
   end
   
   def render_view sale_view
-    display_scanned_product_price_message(
-      sale_view.placeholder_values[:price])
+    if sale_view.view_name == "Product Not Found"
+      display_product_not_found_message sale_view.placeholder_values[:barcode]
+    elsif sale_view.view_name == "Scanned Product Price"
+      display_scanned_product_price_message(
+        sale_view.placeholder_values[:price])
+    end
   end
 
   private
