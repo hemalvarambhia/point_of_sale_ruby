@@ -3,11 +3,10 @@ require_relative '../lib/sale_controller'
 describe "SellOneItemController" do
   context "product found" do
     it "displays the price the user" do
-      display = double("display")
       catalogue = double("catalogue")
       irrelevant_price = Price.pence 795
       allow(catalogue).to receive(:find_price).with("::product found::").and_return irrelevant_price
-      sale_controller = SaleController.new(display, catalogue)
+      sale_controller = SaleController.new(catalogue)
       
       sale_view = sale_controller.on_barcode "::product found::"
 
@@ -18,10 +17,9 @@ describe "SellOneItemController" do
 
   context "product not found" do
     it "tells the user the product was not found" do
-      display = double("display")
       catalogue = double("catalogue")
       allow(catalogue).to receive(:find_price).with("::product not found::").and_return nil
-      sale_controller = SaleController.new(display, catalogue)
+      sale_controller = SaleController.new(catalogue)
 
       sale_view = sale_controller.on_barcode "::product not found::"
    

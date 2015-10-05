@@ -1,6 +1,5 @@
 class SaleController
-  def initialize(display, catalogue)
-    @display = display
+  def initialize(catalogue)
     @catalogue = catalogue
   end
   
