@@ -6,14 +6,7 @@ require './in_memory_catalogue.rb'
 require './price.rb'
 require './console_post_office.rb'
 
-class NullViewRenderer
-  def render sale_view
-
-  end
-end
-
 sale_controller = SaleController.new(
-  EnglishLanguageTextDisplay.new(ConsolePostOffice.new) , 
   InMemoryCatalogue.new({
    "12345" => Price.pence(795),
    "23456" => Price.pence(1250)
